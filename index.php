@@ -1,3 +1,20 @@
+<?php
+
+    if(isset($_POST['submit']))
+    {
+        //print_r('Nome: ' . $_POST['nome']);
+        //print_r('<br>');
+        //print_r('Email: ' . $_POST['email']);
+
+        include_once('config.php');
+
+        $nome = $_POST['nome'];
+        $email = $_POST['email'];
+
+        $result = mysqli_query($conexao, "INSERT INTO usuarios(nome,email) VALUES($nome,$email)");
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -32,10 +49,10 @@
             <h2>Na Newslatter</h2>
             <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.         
             </p>
-            <form>
-                <input type="text" placeholder="Nome">
-                <input type="email" placeholder="E-mail">
-                <input type="submit" value="Enviar >">
+            <form action="index.php" method="POST">
+                <input type="text" name="nome" id="nome" placeholder="Nome">
+                <input type="email" name="email" id="email" placeholder="E-mail">
+                <input type="submit" name="submit" id="submit" value="Enviar >">
             </form>
         </aside>
 
